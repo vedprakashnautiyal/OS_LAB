@@ -4,6 +4,7 @@
 
 int main()
 {
+    printf("Ved Prakash Nautiyal\tSection C\tStudent ID : 210111216\n");
     printf("Enter Number - ");
     int n;
     scanf("%d", &n);
