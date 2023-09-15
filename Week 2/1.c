@@ -3,7 +3,7 @@
 //  When Parent is sleep therefore child will be terminated first then parent, this is called "Zombie Process" because child is terminated but it's id is in still in parent - Parent Sleep
 //  And if we make child sleep then parent will sleep first and then child will have no parent, This is known as "Orphan Process" - Child Sleep
 
-//-------------------------------Orphan Process
+//Question No. 3 -------------------------------Orphan Process
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
