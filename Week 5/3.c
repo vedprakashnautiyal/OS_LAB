@@ -16,7 +16,7 @@ int comp(const void *a, const void *b)
     return p1->at > p2->at;
 }
 
-void averageTime(pro *process, int n, float total_it)
+void averageTime(pro *process, int n, float idle)
 {
     float total_wt = 0, total_tat = 0, total_rt = 0;
 
@@ -32,14 +32,14 @@ void averageTime(pro *process, int n, float total_it)
     printf("\nAverage Waiting time %.2f\n", total_wt / (float)n);
     printf("Average Turn Around time %.2f\n", total_tat / (float)n);
     printf("Average Response time %.2f\n", total_rt / (float)n);
-    printf("CPU utilization %.2f\n", ((process[n - 1].ct - total_it) / (float)process[n - 1].ct) * 100);
+    printf("CPU utilization %.2f\n", ((process[n - 1].ct - idle) / (float)process[n - 1].ct) * 100);
     printf("Throughput %.2f\n", (float)n / (process[n - 1].ct - process[0].at));
 }
 
 int main()
 {
     int n, current_time = 0, completed = 0, prev = 0;
-    float total_it = 0;
+    float idle = 0;
 
 
     printf("Enter the Number of processes : ");
@@ -90,7 +90,7 @@ int main()
             if (process[idx].bt_remaining == process[idx].bt)
             {
                 process[idx].start = current_time;
-                total_it += process[idx].start - prev;
+                idle += process[idx].start - prev;
             }
             process[idx].bt_remaining -= 1;
             current_time++;
@@ -112,7 +112,7 @@ int main()
         }
     }
 
-    averageTime(process, n, total_it);
+    averageTime(process, n, idle);
 
     return 0;
 }
