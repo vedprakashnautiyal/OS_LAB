@@ -6,20 +6,11 @@ typedef struct process
     float pid,bt,ct,tat,wt;
 }pro;
 
-void bubbleSort(pro process[],int n)
+int comp(const void *a, const void *b)
 {
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n-i-1;j++)
-        {
-            if(process[j].bt>process[j+1].bt)
-            {
-                pro temp=process[j];
-                process[j]=process[j+1];
-                process[j+1]=temp;
-            }
-        }
-    }
+    pro *p1 = (pro *)a;
+    pro *p2 = (pro *)b;
+    return p1->bt > p2->bt;
 }
 
 int main()
@@ -36,7 +27,8 @@ int main()
         scanf("%f",&process[i].bt);
     }
 
-    bubbleSort(process,n);
+    qsort(process, n, sizeof(pro), comp);
+    
     process[0].ct=process[0].bt;
     for(int i=1;i<n;i++)
     {
@@ -53,7 +45,7 @@ int main()
     printf("PID \tBT\tCT\tTAT\tWT\n");
     for (int i=0;i<n;i++)
     {
-        printf("%.1f \t%.1f\t%.1f\t%.1f\t%.1f\n",process[i].pid,process[i].bt,process[i].ct,process[i].tat,process[i].wt);
+        printf("%.f \t%.f\t%.f\t%.f\t%.f\n",process[i].pid,process[i].bt,process[i].ct,process[i].tat,process[i].wt);
     }
     cu=((process[n-1].ct-idle)/process[n-1].ct)*100;
     atat=atat/n;
