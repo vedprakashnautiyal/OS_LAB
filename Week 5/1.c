@@ -6,7 +6,7 @@
 
 typedef struct process
 {
-    int at, bt, pro, ct, tat, wt, rt, pid, bt_remaining, is_completed;
+    int at, bt, start, ct, tat, wt, rt, pid, bt_remaining, is_completed;
 } pro;
 
 int comp(const void *a, const void *b)
@@ -86,8 +86,8 @@ int main()
         {
             if (process[idx].bt_remaining == process[idx].bt)
             {
-                process[idx].pro = current_time; // start time
-                idle += process[idx].pro - prev;
+                process[idx].start = current_time; // start time
+                idle += process[idx].start - prev;
             }
 
             process[idx].bt_remaining -= 1;
@@ -99,7 +99,7 @@ int main()
                 process[idx].ct = current_time;               // completion time
                 process[idx].tat = process[idx].ct - process[idx].at; // turn around time
                 process[idx].wt = process[idx].tat - process[idx].bt; // waiting time
-                process[idx].rt = process[idx].pro - process[idx].at;  // response time
+                process[idx].rt = process[idx].start - process[idx].at;  // response time
                 process[idx].is_completed = 1;
                 completed++;
             }
