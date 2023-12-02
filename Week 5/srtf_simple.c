@@ -1,5 +1,3 @@
-// Just looking like a simple program
-
 #include <stdio.h>
 #include <limits.h>
 
@@ -35,17 +33,6 @@ int main(){
         p[i].st = 0;
     }
 
-    // sort according to at
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n-i-1; j++){
-            if(p[j].at > p[j+1].at){
-                struct process temp = p[j];
-                p[j] = p[j+1];
-                p[j+1] = temp;
-            }
-        }
-    }
-
     // scheduling
     int completed = 0, ct = 0;
     while(completed != n){
@@ -65,9 +52,9 @@ int main(){
     }
 
     // printing the table
-    printf("\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n");
+    printf("\nPID\tAT\tBT\tCT\tTAT\tWT\n");
     for(int i=0; i<n; i++){
-        printf("%d\t%d\t%d\t%d\t%d\t%d\n", p[i].pid, p[i].at, p[i].bt, p[i].ct, p[i].tat, p[i].wt, p[i].rt);
+        printf("%d\t%d\t%d\t%d\t%d\t%d\n", p[i].pid, p[i].at, p[i].bt, p[i].ct, p[i].tat, p[i].wt);
     }
 
     // calculating average tat and average wt
@@ -78,7 +65,7 @@ int main(){
     }
     avg_tat /= n;
     avg_wt /= n;
-    printf("moye moye");
+
     printf("\nAverage TAT: %f\nAverage WT: %f\n", avg_tat, avg_wt);
     return 0;
     
