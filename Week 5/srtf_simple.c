@@ -5,8 +5,6 @@ struct process{
     int pid, at, bt, ct, tat, wt, st, rt;
 };
 
-
-
 int find_min_remaining(struct process p[], int n, int ct){
     int mini = -1;
     int min_remaining = INT_MAX;
@@ -18,7 +16,6 @@ int find_min_remaining(struct process p[], int n, int ct){
     }
     return mini;
 }
-
 
 int main(){
     int n;
@@ -68,7 +65,6 @@ int main(){
 
     printf("\nAverage TAT: %f\nAverage WT: %f\n", avg_tat, avg_wt);
     return 0;
-    
 }
 
 /*
